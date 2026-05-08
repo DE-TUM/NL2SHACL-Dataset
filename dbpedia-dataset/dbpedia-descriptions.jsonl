@@ -1,0 +1,10 @@
+{"id": "dbpedia-1", "label": "BookAuthorShape", "description": "A book must have exactly one author."}
+{"id": "dbpedia-2", "label": "PersonAgeShape", "description": "The age of a person must be an integer."}
+{"id": "dbpedia-3", "label": "PersonGenderShape", "description": "The gender of a person must be Male, Female, or Other."}
+{"id": "dbpedia-4", "label": "PersonHeightShape", "description": "A person's height must be a positive decimal number."}
+{"id": "dbpedia-5", "label": "BlogPostShape", "description": "A blog post must have at least one tag."}
+{"id": "dbpedia-6", "label": "FilmRatingShape", "description": "A film's rating must be an integer between 1 and 5."}
+{"id": "dbpedia-7", "label": "CityShape", "description": "The name of a city must not exceed 100 characters."}
+{"id": "dbpedia-8", "label": "BookISBNShape", "description": "A book's ISBN must be a string."}
+{"id": "dbpedia-9", "label": "CountryShape", "description": "A country code must be exactly two uppercase letters."}
+{"id": "dbpedia-10", "label": "BookTitleShape", "description": "A book must have at least one title and at least one ISBN."}
