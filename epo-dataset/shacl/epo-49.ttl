@@ -1,0 +1,51 @@
+# label: epo-shape:epo-AwardCriterionShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-AwardCriterionShape a sh:NodeShape ;
+    rdfs:label "Award Criterion" ;
+    rdfs:comment "Criterion that describes a Requirement that the Tender needs to resolve and on which the Tender is evaluated and ranked." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-AwardCriterion-epo-hasAwardCriteriaStatedInProcurementDocuments,
+        epo-shape:epo-AwardCriterion-epo-hasAwardCriterionType,
+        epo-shape:epo-AwardCriterion-epo-hasFixedValue,
+        epo-shape:epo-AwardCriterion-epo-hasFixedValueType ;
+    sh:targetClass epo:AwardCriterion .
+
+epo-shape:epo-AwardCriterion-epo-hasAwardCriteriaStatedInProcurementDocuments a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "The Award Criteria are provided in the Procurement Documents." ;
+    sh:maxCount 1 ;
+    sh:name "Has award criteria stated in procurement documents" ;
+    sh:path epo:hasAwardCriteriaStatedInProcurementDocuments .
+
+epo-shape:epo-AwardCriterion-epo-hasAwardCriterionType a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Category of award criterion." ;
+    sh:maxCount 1 ;
+    sh:name "Has award criterion type" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAwardCriterionType .
+
+epo-shape:epo-AwardCriterion-epo-hasFixedValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:decimal ;
+    sh:description "Constant number." ;
+    sh:maxCount 1 ;
+    sh:name "Has fixed value" ;
+    sh:path epo:hasFixedValue .
+
+epo-shape:epo-AwardCriterion-epo-hasFixedValueType a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The method to interpret the fixed value as pertaining to a total or unit." ;
+    sh:maxCount 1 ;
+    sh:name "Has fixed value type" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasFixedValueType .

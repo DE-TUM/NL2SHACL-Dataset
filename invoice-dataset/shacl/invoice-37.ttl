@@ -1,0 +1,18 @@
+# label: StrasseRechnungsempfaenger
+@prefix : <http://mapping.example.com/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:StrasseRechnungsempfaenger a sh:NodeShape ;
+    sh:message "Data element 3042 is missing for Segemnet NAD+IV, i.e. specification of the invoice recipient's street address" ;
+    sh:or ( [ sh:not [ a sh:PropertyShape ;
+                        sh:hasValue "http://example.com/InvoiceeRole" ;
+                        sh:path rdf:type ] ] [ sh:datatype xsd:string ;
+                sh:maxCount 1 ;
+                sh:maxLength 35 ;
+                sh:minCount 1 ;
+                sh:path vcard:hasStreetAddress ] ) ;
+    sh:targetClass org:FormalOrganization .

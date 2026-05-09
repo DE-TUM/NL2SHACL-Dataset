@@ -1,0 +1,26 @@
+# label: chemrof:EntityWithConnectivitySpecificied
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:EntityWithConnectivitySpecificied a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for an entity that consists of two or more atom occurrences where the connectivity is specified (corresponding to the /c layer in InChI)" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "entity with connectivity specificied" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Describes how many hydrogen atoms are connected to each of the other atoms." ;
+            sh:maxCount 1 ;
+            sh:name "inchi hydrogen connections sublayer" ;
+            sh:order 1 ;
+            sh:path chemrof:inchi_hydrogen_connections_sublayer ;
+            sh:pattern "^h.*" ],
+        [ sh:datatype xsd:string ;
+            sh:description "The atoms in the chemical formula (except for hydrogens) are numbered in sequence; this sublayer describes which atoms are connected by bonds to which other ones." ;
+            sh:maxCount 1 ;
+            sh:name "inchi atom connections sublayer" ;
+            sh:order 0 ;
+            sh:path chemrof:inchi_atom_connections_sublayer ;
+            sh:pattern "^c.*" ] ;
+    sh:targetClass chemrof:EntityWithConnectivitySpecificied .

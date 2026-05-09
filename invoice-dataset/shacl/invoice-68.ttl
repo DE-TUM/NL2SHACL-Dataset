@@ -1,0 +1,13 @@
+# label: Abschlag
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Abschlag a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 15 ;
+            sh:message "The data element 7160 or 7161 is missing in the ALC segment, i.e. the tee type specification." ;
+            sh:minLength 1 ;
+            sh:path edifact-o:hasAllowanceReason ] ;
+    sh:targetClass edifact-o:Item .

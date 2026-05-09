@@ -1,0 +1,18 @@
+# label: LandLieferanschrift
+@prefix : <http://mapping.example.com/> .
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:LandLieferanschrift a sh:NodeShape ;
+    sh:message "Data element 3207 is missing for the Segemnet NAD+DP, i.e. specification of the country of the delivery address" ;
+    sh:or ( [ sh:not [ a sh:PropertyShape ;
+                        sh:hasValue "http://example.com/DeliveryPartyRole" ;
+                        sh:path rdf:type ] ] [ sh:datatype xsd:string ;
+                sh:maxCount 1 ;
+                sh:maxLength 3 ;
+                sh:minCount 1 ;
+                sh:path frapo:hasCountryCode ] ) ;
+    sh:targetClass org:FormalOrganization .

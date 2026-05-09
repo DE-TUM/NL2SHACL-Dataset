@@ -1,0 +1,41 @@
+# label: epo-shape:epo-BusinessShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-BusinessShape a sh:NodeShape ;
+    rdfs:label "Business" ;
+    rdfs:comment "A private law company registered in a national registry." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Business-epo-hasBeneficialOwner,
+        epo-shape:epo-Business-epo-hasBusinessSize,
+        epo-shape:epo-Business-epo-isListedCompany ;
+    sh:targetClass epo:Business .
+
+epo-shape:epo-Business-epo-hasBeneficialOwner a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class <http://www.w3.org/ns/person#Person> ;
+    sh:description "A role of any natural person(s) who ultimately owns or controls the organisation or on whose behalf a transaction or activity is being conducted. Additional Information: This role is defined in the directive EU 2015/849 and it's beyond the scope for public eProcurement domain." ;
+    sh:name "Has beneficial owner" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasBeneficialOwner .
+
+epo-shape:epo-Business-epo-hasBusinessSize a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The category of the business depending on number of employees and turnover. Additional information: See Commission Recommendation of 6 May 2003 concerning the definition of micro, small and medium-sized enterprises." ;
+    sh:maxCount 1 ;
+    sh:name "Has business size" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasBusinessSize .
+
+epo-shape:epo-Business-epo-isListedCompany a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Public companies listed on a stock exchange and subject to disclosure requirements (either by stock exchange rules or through law or enforceable means), which impose requirements to ensure adequate transparency of beneficial ownership. <u>Additional Information:</u> In eForms this indicator is used when the nationality of beneficial owner is not provided because the Economic Operator is registered in a regulated market that is subject to disclosure requirements consistent with Union law or subject to equivalent international standards which ensure adequate transparency of ownership information." ;
+    sh:maxCount 1 ;
+    sh:name "Is listed company" ;
+    sh:path epo:isListedCompany .

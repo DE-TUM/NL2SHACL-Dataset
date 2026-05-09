@@ -1,0 +1,51 @@
+# label: epo-shape:epo-ord-DeliveryAgreementShape
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ord-DeliveryAgreementShape a sh:NodeShape ;
+    rdfs:label "Delivery Agreement" ;
+    rdfs:comment "Term applying to the delivery of goods, services and works. Additional Information: Delivery terms identifier can normally be Incoterms accompanied by the description of specific conditions related to the delivery." ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:property epo-shape:epo-ord-DeliveryAgreement-epo-ord-hasGeneralDeliveryTerm,
+        epo-shape:epo-ord-DeliveryAgreement-epo-ord-hasRequestedShippingPriority,
+        epo-shape:epo-ord-DeliveryAgreement-epo-ord-isPartialDeliveryAllowed,
+        epo-shape:epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation ;
+    sh:targetClass epo:DeliveryAgreement .
+
+epo-shape:epo-ord-DeliveryAgreement-epo-ord-hasGeneralDeliveryTerm a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:description "Terms and conditions related to the delivery of goods." ;
+    sh:maxCount 1 ;
+    sh:name "Has general delivery term" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasGeneralDeliveryTerm .
+
+epo-shape:epo-ord-DeliveryAgreement-epo-ord-hasRequestedShippingPriority a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:description "The level of importance or sequence assigned to the delivery." ;
+    sh:maxCount 1 ;
+    sh:name "Has requested shipping priority" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasRequestedShippingPriority .
+
+epo-shape:epo-ord-DeliveryAgreement-epo-ord-isPartialDeliveryAllowed a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "An indicator to state if partial delivery is allowed or not." ;
+    sh:maxCount 1 ;
+    sh:name "Is partial delivery allowed" ;
+    sh:path epo:isPartialDeliveryAllowed .
+
+epo-shape:epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class dcterms:Location ;
+    sh:description "Relation indicating the Location from the Delivery Agreement." ;
+    sh:maxCount 1 ;
+    sh:name "Specifies delivery agreement location" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesDeliveryAgreementLocation .

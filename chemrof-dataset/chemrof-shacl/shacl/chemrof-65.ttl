@@ -1,0 +1,28 @@
+# label: chemrof:DomainEntity
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:DomainEntity a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A discrete, specific named entity in the domain of chemistry." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "domain entity" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 1 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 2 ;
+            sh:path chemrof:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "id" ;
+            sh:order 0 ;
+            sh:path chemrof:id ] ;
+    sh:targetClass chemrof:DomainEntity .

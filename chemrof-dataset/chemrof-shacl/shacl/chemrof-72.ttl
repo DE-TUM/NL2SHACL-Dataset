@@ -1,0 +1,51 @@
+# label: chemrof:AtomOccurrence
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:AtomOccurrence a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An occurrence of an atom in the context of a particular molecule. For example, one of two occurrences of oxygen in nitrate" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "atom occurrence" ;
+    sh:property [ sh:class owl:Class ;
+            sh:description "Holds between C and P if C owl:subClassOf P. Note that in this model, most classes are metaclasses (see 'owl class'), where these metaclasses may represent *groupings* or specific countable elements or species. We provide two different sub-properties of subclass of for two cases: (1) subtype_of, which connects grouping classes (e.g. alkane is_a hydrocarbon; alpha-amino-acid is_a amino-acid), (2) classified_by, which connects a specific element to a grouping class (e.g. methane is_a hydrocarbon; iron is_a metal; serine is_a amino-acid)" ;
+            sh:maxCount 1 ;
+            sh:name "owl subclass of" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path chemrof:owl_subclass_of ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The number of atoms bonded to the atom of interest. [https://doi.org/10.1021%2Fed083p791]" ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path chemrof:coordination_number ],
+        [ sh:class chemrof:Atom ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path chemrof:occurrence_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path chemrof:name ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The charge remaining on an atom when all ligands are removed heterolytically in their closed form, with the electrons being transferred to the more electronegative partner; homonuclear bonds do not contribute to the oxidation number. [https://doi.org/10.1021%2Fed083p791]" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path chemrof:oxidation_number ],
+        [ sh:datatype xsd:integer ;
+            sh:description "the number of electrons that an atom uses in bonding [https://doi.org/10.1021%2Fed083p791]" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path chemrof:valence ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The charge remaining on an atom when all ligands are removed homolytically. [https://doi.org/10.1021%2Fed083p791]" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path chemrof:formal_charge ] ;
+    sh:targetClass chemrof:AtomOccurrence .

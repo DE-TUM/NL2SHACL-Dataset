@@ -1,0 +1,65 @@
+# label: epo-shape:epo-cat-EnvironmentalEmissionInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformationShape a sh:NodeShape ;
+    rdfs:label "Environmental Emission Information" ;
+    rdfs:comment "Information about the emissions related to a product, work or service that are released into the environment." ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:property epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem,
+        epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode,
+        epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure,
+        epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans,
+        epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod ;
+    sh:targetClass epo:EnvironmentalEmissionInformation .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:AbstractItem ;
+    sh:description "Relates to Item." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns item" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsItem .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class skos:Concept ;
+    sh:description "Relation indicating the Environmental Emission Code." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has environmental emission code" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasEnvironmentalEmissionCode .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:Quantity ;
+    sh:description "Relation indicating the unit used for stating the size." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has measure" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasMeasure .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:TransportMeans ;
+    sh:description "Relates to Transport Means." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns transport means" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsTransportMeans .
+
+epo-shape:epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:description "Formula for obtaining values. Additional Information: The possible values are monetary values, ranking scores, criterion weighting." ;
+    sh:maxCount 1 ;
+    sh:name "Has calculation method" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasCalculationMethod .

@@ -1,0 +1,10 @@
+# label: skos:Concept
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+skos:Concept a sh:NodeShape ;
+    sh:property [ sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ;
+            sh:severity sh:Violation ] .

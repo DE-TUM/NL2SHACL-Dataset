@@ -1,0 +1,11 @@
+# label: adms:Identifier
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+adms:Identifier a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ;
+            sh:severity sh:Violation ] .

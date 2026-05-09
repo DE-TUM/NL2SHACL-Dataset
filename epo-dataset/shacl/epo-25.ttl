@@ -1,0 +1,51 @@
+# label: epo-shape:epo-ReviewInformationShape
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ReviewInformationShape a sh:NodeShape ;
+    rdfs:label "Review Information" ;
+    rdfs:comment "Information about the Review Decision or the Review Request." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ReviewInformation-epo-concernsReviewDecision,
+        epo-shape:epo-ReviewInformation-epo-concernsReviewRequest,
+        epo-shape:epo-ReviewInformation-epo-hasElementReference,
+        epo-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier ;
+    sh:targetClass epo:ReviewInformation .
+
+epo-shape:epo-ReviewInformation-epo-concernsReviewDecision a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:ReviewDecision ;
+    sh:description "Relates to Review Decision." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns review decision" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsReviewDecision .
+
+epo-shape:epo-ReviewInformation-epo-concernsReviewRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:ReviewRequest ;
+    sh:description "Relates to Review Request." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns review request" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsReviewRequest .
+
+epo-shape:epo-ReviewInformation-epo-hasElementReference a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:anyURI ;
+    sh:description "Reference to the class instance in the current notice." ;
+    sh:name "Has element reference" ;
+    sh:path epo:hasElementReference .
+
+epo-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class adms:Identifier ;
+    sh:description "Is about a specific eForms section." ;
+    sh:maxCount 1 ;
+    sh:name "Relates to E form section identifier" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:relatesToEFormSectionIdentifier .

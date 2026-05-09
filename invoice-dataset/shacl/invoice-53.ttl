@@ -1,0 +1,16 @@
+# label: EANAtrikelnummer
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:EANAtrikelnummer a sh:NodeShape ;
+    sh:message "The LIN segment with the value EN in data element 7143 is missing, i.e. the specification of the EAN article number or the PIA segment with the value SA in data element 7143 is missing, i.e. the specification of the supplier's article number." ;
+    sh:or ( [ sh:datatype xsd:string ;
+                sh:hasValue "International Article Number" ;
+                sh:minCount 1 ;
+                sh:path edifact-o:hasProductIdentification ] [ sh:datatype xsd:string ;
+                sh:minCount 1 ;
+                sh:path edifact-o:itemNumberSupplier ] ) ;
+    sh:targetClass edifact-o:Item .

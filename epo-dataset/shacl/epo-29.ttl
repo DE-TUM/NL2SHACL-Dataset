@@ -1,0 +1,44 @@
+# label: epo-shape:epo-inv-CreditTransferInformationShape
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-inv-CreditTransferInformationShape a sh:NodeShape ;
+    rdfs:label "Credit Transfer Information" ;
+    rdfs:comment "Information about a direct payment of money from one bank account into another." ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:property epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountIdentifier,
+        epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountName,
+        epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentServiceProviderIdentifier ;
+    sh:targetClass epo:CreditTransferInformation .
+
+epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountIdentifier a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:class adms:Identifier ;
+    sh:description "A unique identifier of the financial payment account, at a payment service provider, to which payment should be made." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has payment account identifier" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasPaymentAccountIdentifier .
+
+epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountName a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:description "The name of the account that can send and receive payments to and from a payment service provider." ;
+    sh:maxCount 1 ;
+    sh:name "Has payment account name" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasPaymentAccountName .
+
+epo-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentServiceProviderIdentifier a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:class adms:Identifier ;
+    sh:description "An identifier for the payment service provider where a payment account is located." ;
+    sh:maxCount 1 ;
+    sh:name "Has payment service provider identifier" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasPaymentServiceProviderIdentifier .

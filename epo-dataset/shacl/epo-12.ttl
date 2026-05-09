@@ -1,0 +1,42 @@
+# label: epo-shape:epo-ContractorShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ContractorShape a sh:NodeShape ;
+    rdfs:label "Contractor" ;
+    rdfs:comment "The Role of an Agent that has signed a Contract with a Buyer." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Contractor-epo-foreseesSubcontractor,
+        epo-shape:epo-Contractor-epo-hasSubcontractor,
+        epo-shape:epo-Contractor-epo-needsToBeAWinner ;
+    sh:targetClass epo:Contractor .
+
+epo-shape:epo-Contractor-epo-foreseesSubcontractor a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Subcontractor ;
+    sh:description "Relation indicating that an Organization plans to have a Subcontractor. Additional information: In eForms, in a Result Notice, the foreseen Subcontractors in a Tender are associated to the Organization that proposes the Subcontractors. The Subcontractor is associated to the Organization, rather than the Tenderer, so that, in the case of multiple Organizations being a Tenderer, it is clear to which Organization the proposed Subcontractor is associated." ;
+    sh:maxCount 1 ;
+    sh:name "Foresees subcontractor" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:foreseesSubcontractor .
+
+epo-shape:epo-Contractor-epo-hasSubcontractor a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Subcontractor ;
+    sh:description "Relation indicating the Subcontractor." ;
+    sh:maxCount 1 ;
+    sh:name "Has subcontractor" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasSubcontractor .
+
+epo-shape:epo-Contractor-epo-needsToBeAWinner a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Winner ;
+    sh:description "The Contractor must be a Winner." ;
+    sh:maxCount 1 ;
+    sh:name "Needs to be A winner" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:needsToBeAWinner .

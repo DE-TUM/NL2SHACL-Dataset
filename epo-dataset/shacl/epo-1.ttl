@@ -1,0 +1,42 @@
+# label: epo-shape:epo-acc-ESPDRequestShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-acc-ESPDRequestShape a sh:NodeShape ;
+    rdfs:label "ESPD Request" ;
+    rdfs:comment "A document issued by a Buyer defining how the Exclusion Grounds and the Selection Criteria should be addressed in an European Single Procurement Document for a specific procurement." ;
+    rdfs:isDefinedBy epo-shape:acc-shape ;
+    sh:property epo-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice,
+        epo-shape:epo-acc-ESPDRequest-epo-concernsProcedure,
+        epo-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion ;
+    sh:targetClass epo:ESPDRequest .
+
+epo-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:acc-shape ;
+    sh:class epo:Notice ;
+    sh:description "Reference to a Notice." ;
+    sh:name "Refers to notice" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:refersToNotice .
+
+epo-shape:epo-acc-ESPDRequest-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:acc-shape ;
+    sh:class epo:Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsProcedure .
+
+epo-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:acc-shape ;
+    sh:class epo:ProcurementCriterion ;
+    sh:description "Relation indicating the Procurement Criterion to be used." ;
+    sh:minCount 1 ;
+    sh:name "Specifies procurement criterion" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesProcurementCriterion .

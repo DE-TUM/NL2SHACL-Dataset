@@ -1,0 +1,52 @@
+# label: epo-shape:epo-DynamicPurchaseSystemTechniqueShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-DynamicPurchaseSystemTechniqueShape a sh:NodeShape ;
+    rdfs:label "Dynamic Purchase System Technique" ;
+    rdfs:comment "A Technique that allows the selection of Candidates throughout the Procedure via the Qualification Criteria, followed by individual Mini-Competitions for the Award of Purchase Contracts." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasDPSScope,
+        epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasEstimatedDuration,
+        epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnknownDuration,
+        epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnlimitedDuration ;
+    sh:targetClass epo:DynamicPurchaseSystemTechnique .
+
+epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasDPSScope a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Explanation as to whether a dps is used and by whom. The codelist to be used is at-voc:dps-usage which is available at http://publications.europa.eu/resource/dataset/dps-usage" ;
+    sh:maxCount 1 ;
+    sh:name "Has DPS scope" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasDPSScope .
+
+epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasEstimatedDuration a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class time:Duration ;
+    sh:description "Relation indicating a Dynamic Purchase System has an estimated Duration." ;
+    sh:maxCount 1 ;
+    sh:name "Has estimated duration" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasEstimatedDuration .
+
+epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnknownDuration a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicates the Duration is undetermined." ;
+    sh:maxCount 1 ;
+    sh:name "Has unknown duration" ;
+    sh:path epo:hasUnknownDuration .
+
+epo-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnlimitedDuration a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicates the Duration is endless." ;
+    sh:maxCount 1 ;
+    sh:name "Has unlimited duration" ;
+    sh:path epo:hasUnlimitedDuration .

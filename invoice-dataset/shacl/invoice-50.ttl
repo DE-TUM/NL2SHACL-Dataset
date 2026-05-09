@@ -1,0 +1,14 @@
+# label: ArtikelNettopreis
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ArtikelNettopreis a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:maxLength 13 ;
+            sh:message "The PRI+AAA segment is missing, i.e. the indication of the net price of an individual article." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasNetPriceOfItem ] ;
+    sh:targetClass edifact-o:Item .

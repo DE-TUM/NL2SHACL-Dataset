@@ -1,0 +1,19 @@
+# label: BookAuthorShape
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:BookAuthorShape
+    a sh:NodeShape ;
+    sh:description "A book must have exactly one author."@en ;
+    sh:targetClass dbo:Book ;
+    sh:property [
+        sh:path dbo:author ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A book must have at exact one author."@en ;
+    ] .

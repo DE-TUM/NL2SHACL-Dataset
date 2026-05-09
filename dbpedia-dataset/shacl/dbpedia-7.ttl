@@ -1,0 +1,16 @@
+# label: CityShape
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:CityShape a sh:NodeShape ;
+  sh:description "The name of a city must not exceed 100 characters."@en ;
+  sh:targetClass dbo:City ;
+  sh:property [
+    sh:path dbo:name ;
+    sh:maxLength 100 ;
+  ] .

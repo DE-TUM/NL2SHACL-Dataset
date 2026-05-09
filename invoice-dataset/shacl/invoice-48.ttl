@@ -1,0 +1,13 @@
+# label: ExistenzAuftragsnummerLieferantArtikel
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ExistenzAuftragsnummerLieferantArtikel a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "The order number of the supplier, RFF+VN, is missing in the item part." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:orderNumberSupplier ] ;
+    sh:targetClass edifact-o:Item .

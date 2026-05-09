@@ -1,0 +1,12 @@
+# label: chemrof:Connectivity
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:Connectivity a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Abstract grouping for slots that related chemical entities via a connectivity relationships" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "connectivity" ;
+    sh:targetClass chemrof:Connectivity .

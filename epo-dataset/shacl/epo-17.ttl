@@ -1,0 +1,31 @@
+# label: epo-shape:epo-AssetShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-AssetShape a sh:NodeShape ;
+    rdfs:label "Asset" ;
+    rdfs:comment "Resource necessary for the provision of a service." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Asset-epo-hasPredominance,
+        epo-shape:epo-Asset-epo-hasSignificance ;
+    sh:targetClass epo:Asset .
+
+epo-shape:epo-Asset-epo-hasPredominance a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Estimated percentage-share of Assets provided compared to Assets used for activities other than the public services." ;
+    sh:maxCount 1 ;
+    sh:name "Has predominance" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasPredominance .
+
+epo-shape:epo-Asset-epo-hasSignificance a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Estimated percentage-share of Assets provided in overall Assets used to provide services under Contract." ;
+    sh:maxCount 1 ;
+    sh:name "Has significance" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasSignificance .

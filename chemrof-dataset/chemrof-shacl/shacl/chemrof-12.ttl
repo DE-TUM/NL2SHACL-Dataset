@@ -1,0 +1,19 @@
+# label: chemrof:CationState
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:CationState a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "This mixin is applied on an entity (atom or molecule) that is positively charged" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "cation state" ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "number of protons minus number of electrons" ;
+            sh:maxCount 1 ;
+            sh:minInclusive 1 ;
+            sh:name "elemental charge" ;
+            sh:order 0 ;
+            sh:path chemrof:elemental_charge ] ;
+    sh:targetClass chemrof:CationState .

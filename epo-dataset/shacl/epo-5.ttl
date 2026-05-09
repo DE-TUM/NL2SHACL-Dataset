@@ -1,0 +1,32 @@
+# label: epo-shape:epo-SelectedCandidateListShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-SelectedCandidateListShape a sh:NodeShape ;
+    rdfs:label "Selected Candidate List" ;
+    rdfs:comment "Record of Candidates admitted to take part in award phases of procurements." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-SelectedCandidateList-epo-containsCandidate,
+        epo-shape:epo-SelectedCandidateList-epo-hasStartDate ;
+    sh:targetClass epo:SelectedCandidateList .
+
+epo-shape:epo-SelectedCandidateList-epo-containsCandidate a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Candidate ;
+    sh:description "Includes Candidate." ;
+    sh:name "Contains candidate" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:containsCandidate .
+
+epo-shape:epo-SelectedCandidateList-epo-hasStartDate a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class time:Interval ;
+    sh:description "Relation indicating the beginning date." ;
+    sh:maxCount 1 ;
+    sh:name "Has start date" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasStartDate .

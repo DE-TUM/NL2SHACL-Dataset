@@ -1,0 +1,32 @@
+# label: epo-shape:epo-ful-ShipmentAgreementShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ful-ShipmentAgreementShape a sh:NodeShape ;
+    rdfs:label "Shipment Agreement" ;
+    rdfs:comment "The commercial agreement between the Buyer and the Seller. Additional Information: The Shipment Agreement describes the items being shipped." ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:property epo-shape:epo-ful-ShipmentAgreement-epo-ful-agreedByBuyer,
+        epo-shape:epo-ful-ShipmentAgreement-epo-ful-agreedBySeller ;
+    sh:targetClass epo:ShipmentAgreement .
+
+epo-shape:epo-ful-ShipmentAgreement-epo-ful-agreedByBuyer a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Buyer ;
+    sh:description "Accepted by Buyer." ;
+    sh:minCount 1 ;
+    sh:name "Agreed by buyer" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:agreedByBuyer .
+
+epo-shape:epo-ful-ShipmentAgreement-epo-ful-agreedBySeller a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Seller ;
+    sh:description "Accepted by Seller." ;
+    sh:minCount 1 ;
+    sh:name "Agreed by seller" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:agreedBySeller .

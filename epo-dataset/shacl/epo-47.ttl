@@ -1,0 +1,51 @@
+# label: epo-shape:epo-sub-ESPDShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-sub-ESPDShape a sh:NodeShape ;
+    rdfs:label "ESPD" ;
+    rdfs:comment "A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement." ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:property epo-shape:epo-sub-ESPD-epo-sub-isContainedInTender,
+        epo-shape:epo-sub-ESPD-epo-sub-providesInformationOn,
+        epo-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest,
+        epo-shape:epo-sub-ESPD-epo-sub-specifiesResponse ;
+    sh:targetClass epo:ESPD .
+
+epo-shape:epo-sub-ESPD-epo-sub-isContainedInTender a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class epo:Tender ;
+    sh:description "Relation indicating that the instance of the concept is part of a Tender." ;
+    sh:name "Is contained in tender" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isContainedInTender .
+
+epo-shape:epo-sub-ESPD-epo-sub-providesInformationOn a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class org:Organization ;
+    sh:description "Offers information about an instance of a concept." ;
+    sh:name "Provides information on" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:providesInformationOn .
+
+epo-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class epo:ESPDRequest ;
+    sh:description "Is about an European Single Procurement Document (ESPD) Request." ;
+    sh:maxCount 1 ;
+    sh:name "Relates to ESPD request" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:relatesToESPDRequest .
+
+epo-shape:epo-sub-ESPD-epo-sub-specifiesResponse a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class epo:Response ;
+    sh:description "Relation indicating that an ESPD Response contains a Response." ;
+    sh:minCount 1 ;
+    sh:name "Specifies response" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesResponse .

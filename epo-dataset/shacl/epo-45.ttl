@@ -1,0 +1,41 @@
+# label: epo-shape:epo-sub-ResponseShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-sub-ResponseShape a sh:NodeShape ;
+    rdfs:label "Response" ;
+    rdfs:comment "An answer given to a question that is part of an ESPD Request." ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:property epo-shape:epo-sub-Response-epo-sub-answersQuestion,
+        epo-shape:epo-sub-Response-epo-sub-isReinforcedBy,
+        epo-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod ;
+    sh:targetClass epo:Response .
+
+epo-shape:epo-sub-Response-epo-sub-answersQuestion a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class <http://data.europa.eu/m8g/InformationRequirement> ;
+    sh:description "Relation indicating that the Response replies to a question." ;
+    sh:name "Answers question" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:answersQuestion .
+
+epo-shape:epo-sub-Response-epo-sub-isReinforcedBy a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class <http://data.europa.eu/m8g/Evidence> ;
+    sh:description "Relation indicating an Evidence that supports the Response." ;
+    sh:name "Is reinforced by" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isReinforcedBy .
+
+epo-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class time:Interval ;
+    sh:description "Relation indicating the period to which the Response shall apply." ;
+    sh:maxCount 1 ;
+    sh:name "Refers to applicable period" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:refersToApplicablePeriod .

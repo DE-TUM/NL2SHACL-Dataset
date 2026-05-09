@@ -1,0 +1,13 @@
+# label: Rechnungsbetrag
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Rechnungsbetrag a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:maxLength 14 ;
+            sh:message "The segment MOA+77 is missing, i.e. the invoice amount is missing." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasInvoiceAmount ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

@@ -1,0 +1,61 @@
+# label: epo-shape:epo-cat-BatchShape
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-cat-BatchShape a sh:NodeShape ;
+    rdfs:label "Batch" ;
+    rdfs:comment "A production lot in which the Item instances were produced." ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:property epo-shape:epo-cat-Batch-epo-cat-hasBestBeforeDate,
+        epo-shape:epo-cat-Batch-epo-cat-hasExpiryDate,
+        epo-shape:epo-cat-Batch-epo-cat-hasManufactureDate,
+        epo-shape:epo-cat-Batch-epo-cat-isProductionOf,
+        epo-shape:epo-cat-Batch-epo-hasBatchID ;
+    sh:targetClass epo:Batch .
+
+epo-shape:epo-cat-Batch-epo-cat-hasBestBeforeDate a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:datatype xsd:date ;
+    sh:description "The day until which the quality of the item will remain optimal." ;
+    sh:maxCount 1 ;
+    sh:name "Has best before date" ;
+    sh:path epo:hasBestBeforeDate .
+
+epo-shape:epo-cat-Batch-epo-cat-hasExpiryDate a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:datatype xsd:date ;
+    sh:description "The last day until which the item can be used." ;
+    sh:maxCount 1 ;
+    sh:name "Has expiry date" ;
+    sh:path epo:hasExpiryDate .
+
+epo-shape:epo-cat-Batch-epo-cat-hasManufactureDate a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:datatype xsd:dateTime ;
+    sh:description "The day of production." ;
+    sh:maxCount 1 ;
+    sh:name "Has manufacture date" ;
+    sh:path epo:hasManufactureDate .
+
+epo-shape:epo-cat-Batch-epo-cat-isProductionOf a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:AbstractItem ;
+    sh:description "Relation indicating the Item that is manufactured." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Is production of" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isProductionOf .
+
+epo-shape:epo-cat-Batch-epo-hasBatchID a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class adms:Identifier ;
+    sh:description "The identifier assigned to a specific batch of the produced Item." ;
+    sh:maxCount 1 ;
+    sh:name "Has batch ID" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasBatchID .

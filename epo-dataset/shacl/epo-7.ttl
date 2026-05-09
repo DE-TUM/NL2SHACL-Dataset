@@ -1,0 +1,32 @@
+# label: epo-shape:epo-FundShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-FundShape a sh:NodeShape ;
+    rdfs:label "Fund" ;
+    rdfs:comment "A financial resource used to support the Procurement. Additional Information: In the context of EU, Funds can be divided into programmes, actions and projects. Examples of EU funds are: the European Structural and Investment Funds, European Social Fund (ESF), the Connecting Europe Facility (CEF) programme, or the ISA2 programme and its actions (e.g. Action 2016.05 European Public Procurement Initiative, which supports the eProcurement Ontology under sub-action 3). Funds may change between the lot and the contract, for example in the case of an emergency crisis, a contract may be financed by a budget that was not foreseen in the call." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Fund-epo-hasFundProgramme,
+        epo-shape:epo-Fund-epo-hasURL ;
+    sh:targetClass epo:Fund .
+
+epo-shape:epo-Fund-epo-hasFundProgramme a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Relation indicating the EU programme used for funding." ;
+    sh:maxCount 1 ;
+    sh:name "Has fund programme" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasFundProgramme .
+
+epo-shape:epo-Fund-epo-hasURL a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:anyURI ;
+    sh:description "The identifier of a resource. Additional Information For example: 1. The URL of the system from where to access the procurement documents; 2. The URL of the system for the submission of tender documents; 3. The URL of the system from where to download a tool to communicate with the Buyer; 4. The URL of the system used by a Technique to allow Economic Operators to exchange information with the Buyer (e.g. eAuction and DPS Systems) 5. The URL of the system used to exchange information between Buyer and EO for questions and clarifications;" ;
+    sh:maxCount 1 ;
+    sh:name "Has URL" ;
+    sh:path epo:hasURL .

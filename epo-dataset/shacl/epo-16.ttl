@@ -1,0 +1,32 @@
+# label: epo-shape:epo-inv-PaymentCardInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-inv-PaymentCardInformationShape a sh:NodeShape ;
+    rdfs:label "Payment Card Information" ;
+    rdfs:comment "Information about card used for payment contemporaneous with invoice issuance." ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:property epo-shape:epo-inv-PaymentCardInformation-epo-inv-hasPaymentCardHolderName,
+        epo-shape:epo-inv-PaymentCardInformation-epo-inv-hasPaymentCardPrimaryAccountNumber ;
+    sh:targetClass epo:PaymentCardInformation .
+
+epo-shape:epo-inv-PaymentCardInformation-epo-inv-hasPaymentCardHolderName a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:description "The name of the account holder of the card used for payment. Additional Information: An account holder is the entity listed or identified as the holder of a Financial Account by the Financial Institution." ;
+    sh:maxCount 1 ;
+    sh:name "Has payment card holder name" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasPaymentCardHolderName .
+
+epo-shape:epo-inv-PaymentCardInformation-epo-inv-hasPaymentCardPrimaryAccountNumber a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:inv-shape ;
+    sh:description "The series of digits embossed on the front of a card used for payment." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has payment card primary account number" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasPaymentCardPrimaryAccountNumber .

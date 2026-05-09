@@ -1,0 +1,40 @@
+# label: epo-shape:epo-ProfessionalSuitabilitySummaryShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ProfessionalSuitabilitySummaryShape a sh:NodeShape ;
+    rdfs:label "Professional Suitability Summary" ;
+    rdfs:comment "Overview of the professional ability required for the economic operator to execute the contract." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ProfessionalSuitabilitySummary-epo-describesProfession,
+        epo-shape:epo-ProfessionalSuitabilitySummary-epo-describesProfessionRelevantLaw,
+        epo-shape:epo-ProfessionalSuitabilitySummary-epo-hasServiceReservedToParticularProfession ;
+    sh:targetClass epo:ProfessionalSuitabilitySummary .
+
+epo-shape:epo-ProfessionalSuitabilitySummary-epo-describesProfession a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Explanatory text about the profession." ;
+    sh:maxCount 1 ;
+    sh:name "Describes profession" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:describesProfession .
+
+epo-shape:epo-ProfessionalSuitabilitySummary-epo-describesProfessionRelevantLaw a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Explanatory text about the law concerning the profession." ;
+    sh:maxCount 1 ;
+    sh:name "Describes profession relevant law" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:describesProfessionRelevantLaw .
+
+epo-shape:epo-ProfessionalSuitabilitySummary-epo-hasServiceReservedToParticularProfession a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Execution of the contract is limited to a particular profession." ;
+    sh:maxCount 1 ;
+    sh:name "Has service reserved to particular profession" ;
+    sh:path epo:hasServiceReservedToParticularProfession .

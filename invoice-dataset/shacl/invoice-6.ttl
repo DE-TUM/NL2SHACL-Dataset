@@ -1,0 +1,12 @@
+# label: LaengeAuftragsnummerLieferantKopf
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:LaengeAuftragsnummerLieferantKopf a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxLength 35 ;
+            sh:message "The order number of the supplier, RFF+VN, in the header is too long" ;
+            sh:path edifact-o:orderNumberSupplier ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

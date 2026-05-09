@@ -1,0 +1,35 @@
+# label: chemrof:SubatomicParticle
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:SubatomicParticle a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical entity below the granularity of an atom." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "subatomic particle" ;
+    sh:property [ sh:in ( CHEBI:24636 CHEBI:30216 CHEBI:36354 CHEBI:30225 CHEBI:36356 CHEBI:36365 CHEBI:36341 CHEBI:36340 CHEBI:36339 CHEBI:36371 CHEBI:15378 CHEBI:36353 CHEBI:36347 CHEBI:36350 CHEBI:36348 CHEBI:33253 CHEBI:29234 CHEBI:29233 CHEBI:36352 CHEBI:36345 CHEBI:36346 CHEBI:146278 CHEBI:33233 CHEBI:30223 CHEBI:36342 CHEBI:36355 CHEBI:30212 CHEBI:36366 CHEBI:30214 CHEBI:36368 CHEBI:36375 CHEBI:36351 CHEBI:36344 CHEBI:36370 CHEBI:36343 CHEBI:10545 CHEBI:30222 CHEBI:36338 CHEBI:30220 CHEBI:36369 CHEBI:36367 CHEBI:36349 ) ;
+            sh:maxCount 1 ;
+            sh:name "subatomic particle type" ;
+            sh:order 0 ;
+            sh:path chemrof:subatomic_particle_type ],
+        [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 3 ;
+            sh:path chemrof:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 2 ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "id" ;
+            sh:order 1 ;
+            sh:path chemrof:id ] ;
+    sh:targetClass chemrof:SubatomicParticle .

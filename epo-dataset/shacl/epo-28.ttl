@@ -1,0 +1,59 @@
+# label: epo-shape:epo-MonetaryValueShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-MonetaryValueShape a sh:NodeShape ;
+    rdfs:label "Monetary Value" ;
+    rdfs:comment "A number of monetary units specified using a given unit of currency. Additional information: In the pre-award phase of the procurement, all monetary values are considered to exclude VAT based on the Directive 2014/24/EU." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-MonetaryValue-epo-hasAmountValue,
+        epo-shape:epo-MonetaryValue-epo-hasCurrency,
+        epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListAgencyID,
+        epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListAgencyName,
+        epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListID ;
+    sh:targetClass epo:MonetaryValue .
+
+epo-shape:epo-MonetaryValue-epo-hasAmountValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:decimal ;
+    sh:description "The numeric value of the amount, including decimals." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has amount value" ;
+    sh:path epo:hasAmountValue .
+
+epo-shape:epo-MonetaryValue-epo-hasCurrency a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The identifier of the currency as in the standard code list used." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has currency" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasCurrency .
+
+epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListAgencyID a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Identifier of the agency that maintains the currency code list used." ;
+    sh:name "Has currency code list agency ID" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasCurrencyCodeListAgencyID .
+
+epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListAgencyName a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Name of the agency that maintains the currency code list used." ;
+    sh:name "Has currency code list agency name" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasCurrencyCodeListAgencyName .
+
+epo-shape:epo-MonetaryValue-epo-hasCurrencyCodeListID a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Concept scheme URI used for the currency code list." ;
+    sh:name "Has currency code list ID" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasCurrencyCodeListID .

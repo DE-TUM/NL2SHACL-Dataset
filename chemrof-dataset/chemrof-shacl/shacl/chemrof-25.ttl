@@ -1,0 +1,19 @@
+# label: chemrof:EntityWithAtomsEnumerated
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:EntityWithAtomsEnumerated a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for an entity that consists of one or more atoms where the atoms and the number of occurrences is counted (corresponding to the chemical layer in InChI)" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "entity with atoms enumerated" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the main chemical formula" ;
+            sh:maxCount 1 ;
+            sh:name "inchi chemical sublayer" ;
+            sh:order 0 ;
+            sh:path chemrof:inchi_chemical_sublayer ;
+            sh:pattern "^[A-Z0-9\\.]+$" ] ;
+    sh:targetClass chemrof:EntityWithAtomsEnumerated .

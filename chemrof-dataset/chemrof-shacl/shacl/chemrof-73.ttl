@@ -1,0 +1,74 @@
+# label: chemrof:ChemicalEntity
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:ChemicalEntity a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A discrete structure that is one or more atoms that can be described by a chemical formula." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "chemical entity" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "id" ;
+            sh:order 8 ;
+            sh:path chemrof:id ],
+        [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 10 ;
+            sh:path chemrof:type ],
+        [ sh:description "A chemical formula where numbers denote relative proportion of atoms. E.g. CH2O for glucose" ;
+            sh:maxCount 1 ;
+            sh:name "empirical formula" ;
+            sh:order 6 ;
+            sh:path chemrof:empirical_formula ],
+        [ sh:datatype xsd:boolean ;
+            sh:maxCount 1 ;
+            sh:name "is radical" ;
+            sh:order 1 ;
+            sh:path chemrof:is_radical ],
+        [ sh:datatype xsd:string ;
+            sh:description "the main chemical formula" ;
+            sh:maxCount 1 ;
+            sh:name "inchi chemical sublayer" ;
+            sh:order 4 ;
+            sh:path chemrof:inchi_chemical_sublayer ;
+            sh:pattern "^[A-Z0-9\\.]+$" ],
+        [ sh:description "A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol." ;
+            sh:name "smiles string" ;
+            sh:order 5 ;
+            sh:path chemrof:smiles_string ],
+        [ sh:maxCount 1 ;
+            sh:name "InChi" ;
+            sh:order 3 ;
+            sh:path chemrof:inchi_string ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "IUPAC name" ;
+            sh:order 0 ;
+            sh:path CHEMINF:000107 ],
+        [ sh:class chemrof:ChemicalRole ;
+            sh:maxCount 1 ;
+            sh:name "has chemical role" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path chemrof:has_chemical_role ],
+        [ sh:class owl:Class ;
+            sh:description "Holds between C and P if C owl:subClassOf P. Note that in this model, most classes are metaclasses (see 'owl class'), where these metaclasses may represent *groupings* or specific countable elements or species. We provide two different sub-properties of subclass of for two cases: (1) subtype_of, which connects grouping classes (e.g. alkane is_a hydrocarbon; alpha-amino-acid is_a amino-acid), (2) classified_by, which connects a specific element to a grouping class (e.g. methane is_a hydrocarbon; iron is_a metal; serine is_a amino-acid)" ;
+            sh:maxCount 1 ;
+            sh:name "owl subclass of" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path chemrof:owl_subclass_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 9 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass chemrof:ChemicalEntity .

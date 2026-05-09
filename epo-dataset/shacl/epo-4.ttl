@@ -1,0 +1,20 @@
+# label: epo-shape:epo-AuxiliaryPartyShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-AuxiliaryPartyShape a sh:NodeShape ;
+    rdfs:label "Auxiliary Party" ;
+    rdfs:comment "Role of an Agent who may be mentioned in the information exchanged during the Procurement Process but who does not play an active part in it." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-AuxiliaryParty-epo-providesDocumentation ;
+    sh:targetClass epo:AuxiliaryParty .
+
+epo-shape:epo-AuxiliaryParty-epo-providesDocumentation a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Documentation ;
+    sh:description "Makes available the Documentation." ;
+    sh:name "Provides documentation" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:providesDocumentation .

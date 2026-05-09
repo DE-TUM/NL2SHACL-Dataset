@@ -1,0 +1,12 @@
+# label: chemrof:Location
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:Location a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Abstract grouping for entities that represent abstract or concrete locations of chemical entities or their parts." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "location" ;
+    sh:targetClass chemrof:Location .

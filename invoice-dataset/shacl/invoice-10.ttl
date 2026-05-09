@@ -1,0 +1,15 @@
+# label: Dokumentfunktion
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Dokumentfunktion a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:in ( "Cancellation" "Replacement" "Duplicate" "Original" "Copy" "Additional transfer" "Stornierung" "Ersatz" "Duplikat" "Original" "Kopie" "Zusaetzliche Uebertragung" ) ;
+            sh:maxCount 1 ;
+            sh:message "Data element 1225 is missing in the BGM segment, i.e. the specification of the document function" ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasDocumentFunction ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

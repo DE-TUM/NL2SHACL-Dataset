@@ -1,0 +1,15 @@
+# label: Dokumentenname
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Dokumentenname a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:in ( "Commercial invoice" "Credit advice" "Value credit" "Value debit" "Handelsrechnung" "Gutschriftsanzeige" "Wertgutschrift" "Wertbelastung" ) ;
+            sh:maxCount 1 ;
+            sh:message "Data element 1001 is missing in the BGM segment" ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasDocumentType ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

@@ -1,0 +1,42 @@
+# label: epo-shape:epo-ful-GoodsItemShape
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ful-GoodsItemShape a sh:NodeShape ;
+    rdfs:label "Goods Item" ;
+    rdfs:comment "An Item including its initial packaging during transportation. Additional information: For example, the Item being bought is the computer. The weight of the computer is X. The weight of the Goods Item is the weight of the computer plus the weight of the initial packaging. During transportation you have for example trace ID which is applied to the GoodsItem, rather than on the Item itself. The declared statistical value can only apply once you have a GoodsItem." ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:property epo-shape:epo-ful-GoodsItem-epo-ful-hasDeclaredStatisticalValue,
+        epo-shape:epo-ful-GoodsItem-epo-ful-hasTraceID,
+        epo-shape:epo-ful-GoodsItem-epo-ful-refersToDespatchLine ;
+    sh:targetClass epo:GoodsItem .
+
+epo-shape:epo-ful-GoodsItem-epo-ful-hasDeclaredStatisticalValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:MonetaryValue ;
+    sh:name "Has declared statistical value" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasDeclaredStatisticalValue .
+
+epo-shape:epo-ful-GoodsItem-epo-ful-hasTraceID a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class adms:Identifier ;
+    sh:description "The identifier used for tracking the Goods Item. Additional information: An example is the EPC number used in RFID." ;
+    sh:maxCount 1 ;
+    sh:name "Has trace ID" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasTraceID .
+
+epo-shape:epo-ful-GoodsItem-epo-ful-refersToDespatchLine a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:DespatchLine ;
+    sh:description "Reference to a Despatch Line." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to despatch line" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:refersToDespatchLine .

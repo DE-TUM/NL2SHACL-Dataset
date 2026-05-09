@@ -1,0 +1,42 @@
+# label: epo-shape:epo-CertificateShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-CertificateShape a sh:NodeShape ;
+    rdfs:label "Certificate" ;
+    rdfs:comment "Proof of conformance of the instance of the concept to a defined set of criteria. Additional Information: Certificates provide assurance of credibility, trust, and transparency in the procurement process." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Certificate-epo-attestedByLabel,
+        epo-shape:epo-Certificate-epo-hasCertificationNumber,
+        epo-shape:epo-Certificate-epo-issuedByCertifier ;
+    sh:targetClass epo:Certificate .
+
+epo-shape:epo-Certificate-epo-attestedByLabel a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:CertificationLabel ;
+    sh:description "Relation indicating which label the certificate is about." ;
+    sh:maxCount 1 ;
+    sh:name "Attested by label" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:attestedByLabel .
+
+epo-shape:epo-Certificate-epo-hasCertificationNumber a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "The unique identifier of the certificate." ;
+    sh:maxCount 1 ;
+    sh:name "Has certification number" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasCertificationNumber .
+
+epo-shape:epo-Certificate-epo-issuedByCertifier a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Certifier ;
+    sh:description "Relation indicating the Certifier responsible for providing the ItemCertificate. Additional Information: Certifier is a role played by an organisation." ;
+    sh:maxCount 1 ;
+    sh:name "Issued by certifier" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:issuedByCertifier .

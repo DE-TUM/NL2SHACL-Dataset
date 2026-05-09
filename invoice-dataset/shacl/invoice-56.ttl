@@ -1,0 +1,12 @@
+# label: LaengeAuftragsnummerKaeuferArtikel
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:LaengeAuftragsnummerKaeuferArtikel a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxLength 35 ;
+            sh:message "The order number of the supplier, RFF+ON, in the item part is too long." ;
+            sh:path edifact-o:orderNumberBuyer ] ;
+    sh:targetClass edifact-o:Item .

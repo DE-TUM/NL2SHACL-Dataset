@@ -1,0 +1,22 @@
+# label: epo-shape:epo-eva-EvaluatorShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-eva-EvaluatorShape a sh:NodeShape ;
+    rdfs:label "Evaluator" ;
+    rdfs:comment "A Role of an Agent that asses the Tender submitted for a Lot." ;
+    rdfs:isDefinedBy epo-shape:eva-shape ;
+    sh:property epo-shape:epo-eva-Evaluator-epo-playedBy ;
+    sh:targetClass epo:Evaluator .
+
+epo-shape:epo-eva-Evaluator-epo-playedBy a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:eva-shape ;
+    sh:class <http://www.w3.org/ns/person#Person> ;
+    sh:description "Relation indicating the Agent that fulfills the function of the instance of the concept." ;
+    sh:maxCount 1 ;
+    sh:name "Played by" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:playedBy .

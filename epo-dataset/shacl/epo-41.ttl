@@ -1,0 +1,58 @@
+# label: epo-shape:epo-SubcontractingEstimateShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-SubcontractingEstimateShape a sh:NodeShape ;
+    rdfs:label "Subcontracting Estimate" ;
+    rdfs:comment "Approximation concerning the foreseen Subcontracting." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-SubcontractingEstimate-epo-hasEstimatedPercentage,
+        epo-shape:epo-SubcontractingEstimate-epo-hasSubcontractingEstimatedValue,
+        epo-shape:epo-SubcontractingEstimate-epo-hasSubjectMatter,
+        epo-shape:epo-SubcontractingEstimate-epo-isSubcontractingPercentageKnown,
+        epo-shape:epo-SubcontractingEstimate-epo-isSubcontractingValueKnown ;
+    sh:targetClass epo:SubcontractingEstimate .
+
+epo-shape:epo-SubcontractingEstimate-epo-hasEstimatedPercentage a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:decimal ;
+    sh:description "The estimated proportion foreseen to be subcontracted." ;
+    sh:maxCount 1 ;
+    sh:name "Has estimated percentage" ;
+    sh:path epo:hasEstimatedPercentage .
+
+epo-shape:epo-SubcontractingEstimate-epo-hasSubcontractingEstimatedValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:MonetaryValue ;
+    sh:description "The estimated value of a single subcontract." ;
+    sh:maxCount 1 ;
+    sh:name "Has subcontracting estimated value" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasSubcontractingEstimatedValue .
+
+epo-shape:epo-SubcontractingEstimate-epo-hasSubjectMatter a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Description of the share of the contract that is to be subcontracted. Additional information: This can be an aggregate of several subcontracts." ;
+    sh:name "Has subject matter" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasSubjectMatter .
+
+epo-shape:epo-SubcontractingEstimate-epo-isSubcontractingPercentageKnown a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicates whether the ratio of the Subcontracting Estimate is defined." ;
+    sh:maxCount 1 ;
+    sh:name "Is subcontracting percentage known" ;
+    sh:path epo:isSubcontractingPercentageKnown .
+
+epo-shape:epo-SubcontractingEstimate-epo-isSubcontractingValueKnown a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicates whether the amount of the Subcontracting Estimate is defined." ;
+    sh:maxCount 1 ;
+    sh:name "Is subcontracting value known" ;
+    sh:path epo:isSubcontractingValueKnown .

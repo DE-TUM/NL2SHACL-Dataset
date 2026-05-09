@@ -1,0 +1,13 @@
+# label: ExistenzKaeufer
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix p2p-o-inv: <https://purl.org/p2p-o/invoice#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ExistenzKaeufer a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:message "The NAD+BY segment is missing" ;
+            sh:minCount 1 ;
+            sh:path p2p-o-inv:hasBuyer ] ;
+    sh:targetClass edifact-o:E-Invoice .

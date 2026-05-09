@@ -1,0 +1,43 @@
+# label: epo-shape:epo-LotGroupAwardInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-LotGroupAwardInformationShape a sh:NodeShape ;
+    rdfs:label "Lot Group Award Information" ;
+    rdfs:comment "Award information related to a given Group of Lots." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-LotGroupAwardInformation-epo-describesLotGroup,
+        epo-shape:epo-LotGroupAwardInformation-epo-hasApproximateGroupFrameworkAgreementValue,
+        epo-shape:epo-LotGroupAwardInformation-epo-hasGroupFrameworkAgreementMaximumValue ;
+    sh:targetClass epo:LotGroupAwardInformation .
+
+epo-shape:epo-LotGroupAwardInformation-epo-describesLotGroup a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:LotGroup ;
+    sh:description "Characterises Lot Group." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Describes lot group" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:describesLotGroup .
+
+epo-shape:epo-LotGroupAwardInformation-epo-hasApproximateGroupFrameworkAgreementValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:MonetaryValue ;
+    sh:description "Relation indicating the estimated Monetary Value of the Lot Group within the Framework Agreement." ;
+    sh:maxCount 1 ;
+    sh:name "Has approximate group framework agreement value" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasApproximateGroupFrameworkAgreementValue .
+
+epo-shape:epo-LotGroupAwardInformation-epo-hasGroupFrameworkAgreementMaximumValue a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:MonetaryValue ;
+    sh:description "Relation indicating the maximum Monetary Value of the Lot Group within the Framework Agreement." ;
+    sh:maxCount 1 ;
+    sh:name "Has group framework agreement maximum value" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasGroupFrameworkAgreementMaximumValue .

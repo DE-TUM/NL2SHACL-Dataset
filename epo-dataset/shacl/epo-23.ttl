@@ -1,0 +1,32 @@
+# label: epo-shape:epo-CertificationLabelShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-CertificationLabelShape a sh:NodeShape ;
+    rdfs:label "Certification Label" ;
+    rdfs:comment "Concept that stands for a set of norms, expectations, standards and policies. Additional Information: Such standards may relate to social, ethical and quality etc." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-CertificationLabel-epo-hasLabelType,
+        epo-shape:epo-CertificationLabel-epo-hasReferenceURI ;
+    sh:targetClass epo:CertificationLabel .
+
+epo-shape:epo-CertificationLabel-epo-hasLabelType a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The label type such environmental, quality, social etc." ;
+    sh:maxCount 1 ;
+    sh:name "Has label type" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasLabelType .
+
+epo-shape:epo-CertificationLabel-epo-hasReferenceURI a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:anyURI ;
+    sh:description "A reference to where the label specification (norms, expectations, standards and policies) can be found." ;
+    sh:maxCount 1 ;
+    sh:name "Has reference URI" ;
+    sh:path epo:hasReferenceURI .

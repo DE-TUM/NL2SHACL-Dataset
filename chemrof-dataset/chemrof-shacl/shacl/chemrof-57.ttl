@@ -1,0 +1,48 @@
+# label: chemrof:Reaction
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:Reaction a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Reaction" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "reaction" ;
+    sh:property [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 6 ;
+            sh:path chemrof:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "id" ;
+            sh:order 4 ;
+            sh:path chemrof:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 5 ;
+            sh:path rdfs:label ],
+        [ sh:description "Proposed Reactions InChI" ;
+            sh:maxCount 1 ;
+            sh:name "has rinchi representation" ;
+            sh:order 0 ;
+            sh:path chemrof:has_rinchi_representation ],
+        [ sh:maxCount 1 ;
+            sh:name "has reaction smiles representation" ;
+            sh:order 1 ;
+            sh:path chemrof:has_reaction_smiles_representation ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:name "reaction rate" ;
+            sh:order 3 ;
+            sh:path chemrof:reaction_rate ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:name "reaction rate coefficient" ;
+            sh:order 2 ;
+            sh:path chemrof:reaction_rate_coefficient ] ;
+    sh:targetClass chemrof:Reaction .

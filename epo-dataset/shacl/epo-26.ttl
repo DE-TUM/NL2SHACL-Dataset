@@ -1,0 +1,29 @@
+# label: epo-shape:epo-not-PreMarketConsultationNoticeShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-not-PreMarketConsultationNoticeShape a sh:NodeShape ;
+    rdfs:label "Pre Market Consultation Notice" ;
+    rdfs:comment "Announcement of a pre-market consultation. Additional information: A pre-market consultation is not a call for competition and no procurement documents are available at the time of consultation. A consultation may or may not be followed by a future competition." ;
+    rdfs:isDefinedBy epo-shape:not-shape ;
+    sh:property epo-shape:epo-not-PreMarketConsultationNotice-epo-preparesForPotentialProcurementObject,
+        epo-shape:epo-not-PreMarketConsultationNotice-epo-refersToRole ;
+    sh:targetClass epo:PreMarketConsultationNotice .
+
+epo-shape:epo-not-PreMarketConsultationNotice-epo-preparesForPotentialProcurementObject a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:not-shape ;
+    sh:class epo:ProcurementObject ;
+    sh:description "Gathers information for a possible Procurement Object." ;
+    sh:name "Prepares for potential procurement object" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:preparesForPotentialProcurementObject .
+
+epo-shape:epo-not-PreMarketConsultationNotice-epo-refersToRole a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:not-shape ;
+    sh:class epo:AgentInRole ;
+    sh:description "Reference to a Role." ;
+    sh:name "Refers to role" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:refersToRole .

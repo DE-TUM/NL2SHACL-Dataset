@@ -1,0 +1,12 @@
+# label: chemrof:InchiObject
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:InchiObject a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A representation of an InChI string as an object, composed of distinct sublayers" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "inchi object" ;
+    sh:targetClass chemrof:InchiObject .

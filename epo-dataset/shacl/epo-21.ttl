@@ -1,0 +1,20 @@
+# label: epo-shape:epo-FrameworkAgreementShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-FrameworkAgreementShape a sh:NodeShape ;
+    rdfs:label "Framework Agreement" ;
+    rdfs:comment "An agreement between one or more Contracting Authorities and one or more Economic Operators. Additional Information: When a Framework Agreement is concerned, the FA will result from LotAwardOutcome which describes a Lot which specifies the both the Qualification and Award Criteria." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-FrameworkAgreement-epo-resultsFromLotAwardOutcome ;
+    sh:targetClass epo:FrameworkAgreement .
+
+epo-shape:epo-FrameworkAgreement-epo-resultsFromLotAwardOutcome a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:LotAwardOutcome ;
+    sh:description "Relation to indicate that a given type of Contract is a consequence of a given Lot Award Outcome." ;
+    sh:name "Results from lot award outcome" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:resultsFromLotAwardOutcome .

@@ -1,0 +1,13 @@
+# label: ValutaDatum
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ValutaDatum a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:maxLength 8 ;
+            sh:message "The specified value date is too long, i.e. the DTM+209." ;
+            sh:path edifact-o:valutaDate ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

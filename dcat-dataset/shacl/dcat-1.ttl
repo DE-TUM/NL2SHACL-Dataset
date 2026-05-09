@@ -1,0 +1,17 @@
+# label: GeoNamesRestriction
+@prefix : <http://data.europa.eu/r5r/mdrcv#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:GeoNamesRestriction a sh:NodeShape ;
+    rdfs:label "Geo names restriction" ;
+    rdfs:comment "Geo names restriction" ;
+    owl:versionInfo "1" ;
+    sh:property [ sh:class skos:ConceptScheme ;
+            sh:hasValue <http://sws.geonames.org> ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path skos:inScheme ] .

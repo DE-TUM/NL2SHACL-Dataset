@@ -1,0 +1,21 @@
+# label: epo-shape:epo-NonDisclosureAgreementTermShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-NonDisclosureAgreementTermShape a sh:NodeShape ;
+    rdfs:label "Non Disclosure Agreement Term" ;
+    rdfs:comment "Conditions and stipulations about a non-disclosure agreement. Additional information: A non-disclosure agreement is a Contract between different parties which ensures information is not shared with other parties." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-NonDisclosureAgreementTerm-epo-isNonDisclosureAgreementRequired ;
+    sh:targetClass epo:NonDisclosureAgreementTerm .
+
+epo-shape:epo-NonDisclosureAgreementTerm-epo-isNonDisclosureAgreementRequired a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "A non-disclosure agreement is needed. Additional information: A non-disclosure agreement is a Contract between different parties which ensures information is not shared with other parties." ;
+    sh:maxCount 1 ;
+    sh:name "Is non disclosure agreement required" ;
+    sh:path epo:isNonDisclosureAgreementRequired .

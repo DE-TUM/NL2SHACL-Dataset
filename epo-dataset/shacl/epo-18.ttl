@@ -1,0 +1,48 @@
+# label: epo-shape:epo-BuyerShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-BuyerShape a sh:NodeShape ;
+    rdfs:label "Buyer" ;
+    rdfs:comment "A Role of an Agent that awards a Contract and/or purchases items. Additional information: In Public Procurement the Role of Buyer is carried out by the following types of Organisation: Contracting Authority, Contracting Entity, a defense Contractor, an international Organisation, or an organisation awarding a Contract subsidized by a Contracting Authority. In Pre-Award, the Buyer generally awards the Contract, however future purchasers may be foreseen. In Post-Award the buyer generally refers to the purchaser of items." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Buyer-epo-delegatesAncillaryActivitiesTo,
+        epo-shape:epo-Buyer-epo-hasActivityDescription,
+        epo-shape:epo-Buyer-epo-hasBuyerProfile,
+        epo-shape:epo-Buyer-epo-isContractingEntity ;
+    sh:targetClass epo:Buyer .
+
+epo-shape:epo-Buyer-epo-delegatesAncillaryActivitiesTo a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:ProcurementServiceProvider ;
+    sh:description "Additional Information: Directive 2014/24/EU describes ancillary purchasing activities as activities consisting in the provision of support to purchasing activities, in particular in the following forms: (a) technical infrastructure enabling contracting authorities to award public contracts or to conclude framework agreements for works, supplies or services; (b) advice on the conduct or design of public procurement procedures; (c) preparation and management of procurement procedures on behalf and for the account of the contracting authority concerned." ;
+    sh:name "Delegates ancillary activities to" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:delegatesAncillaryActivitiesTo .
+
+epo-shape:epo-Buyer-epo-hasActivityDescription a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "In the ePO ontology a taxonomy with all activities, based on different classifications (COFOG, UTILITIES, NACE), will be provided. In ePO this field is to be used exclusively to complement the definition attached to the MainActivityCode. However, in eForms there is the code \"other\" to cover undefined activities. For mapping to this eForms feature one could also use this property." ;
+    sh:name "Has activity description" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasActivityDescription .
+
+epo-shape:epo-Buyer-epo-hasBuyerProfile a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:anyURI ;
+    sh:description "Website address where the buyer publishes information on its procurement procedures and general information." ;
+    sh:maxCount 1 ;
+    sh:name "Has buyer profile" ;
+    sh:path epo:hasBuyerProfile .
+
+epo-shape:epo-Buyer-epo-isContractingEntity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Role of entities, which: (a) are contracting authorities or public undertakings and which pursue one of the activities referred to in Articles 8 to 14 of the Directive 2014/25/EU. (b) when they are not contracting authorities or public undertakings, have as one of their activities any of the activities referred to in Articles 8 to 14, or any combination thereof and operate on the basis of special or exclusive rights granted by a competent authority of a Member State. Additional Information: The indicator is needed in order to discriminate between those contracts where the Contracting Entity acts as a Contracting Authority undergoing the limits and the rules of Directive 24 and those where it acts as a Contracting Entity, with certain relaxed constraints. For example, the Contracting Entities have different thresholds for the application of Directive 24 if compared with Contracting Authorities." ;
+    sh:maxCount 1 ;
+    sh:name "Is contracting entity" ;
+    sh:path epo:isContractingEntity .

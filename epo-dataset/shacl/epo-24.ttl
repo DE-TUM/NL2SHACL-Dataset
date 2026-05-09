@@ -1,0 +1,20 @@
+# label: epo-shape:epo-ConcessionContractShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-ConcessionContractShape a sh:NodeShape ;
+    rdfs:label "Concession Contract" ;
+    rdfs:comment "A Contract between one or more Buyers and one or more Economic Operators giving the right to the Economic Operators to exploit the rights foreseen in the Contract which may include the receipt of Payments." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ConcessionContract-epo-resultsFromLotAwardOutcome ;
+    sh:targetClass epo:ConcessionContract .
+
+epo-shape:epo-ConcessionContract-epo-resultsFromLotAwardOutcome a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:LotAwardOutcome ;
+    sh:description "Relation to indicate that a given type of Contract is a consequence of a given Lot Award Outcome." ;
+    sh:name "Results from lot award outcome" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:resultsFromLotAwardOutcome .

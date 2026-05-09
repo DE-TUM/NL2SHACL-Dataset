@@ -1,0 +1,51 @@
+# label: epo-shape:epo-ProcurementCriterionShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ProcurementCriterionShape a sh:NodeShape ;
+    rdfs:label "Procurement Criterion" ;
+    rdfs:comment "A criterion specific to Procurement." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ProcurementCriterion-epo-hasAdditionalInformation,
+        epo-shape:epo-ProcurementCriterion-epo-hasConstraint,
+        epo-shape:epo-ProcurementCriterion-epo-hasFormula,
+        epo-shape:epo-ProcurementCriterion-epo-hasWeightValueType ;
+    sh:targetClass epo:ProcurementCriterion .
+
+epo-shape:epo-ProcurementCriterion-epo-hasAdditionalInformation a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Supplementary data about the instance of the concept." ;
+    sh:maxCount 1 ;
+    sh:name "Has additional information" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasAdditionalInformation .
+
+epo-shape:epo-ProcurementCriterion-epo-hasConstraint a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class <http://data.europa.eu/m8g/Constraint> ;
+    sh:description "Relation indicating that the instance of the concept has a Constraint." ;
+    sh:name "Has constraint" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasConstraint .
+
+epo-shape:epo-ProcurementCriterion-epo-hasFormula a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "The mathematical equation or any other description used for complicated weighing of criteria (e.g. non-linear weighing, the analytic hierarchy process) when a weighing cannot be expressed per criterion." ;
+    sh:maxCount 1 ;
+    sh:name "Has formula" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasFormula .
+
+epo-shape:epo-ProcurementCriterion-epo-hasWeightValueType a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "No definition. Waiting on CCCEV alignment." ;
+    sh:maxCount 1 ;
+    sh:name "Has weight value type" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasWeightValueType .

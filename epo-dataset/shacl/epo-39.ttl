@@ -1,0 +1,23 @@
+# label: epo-shape:epo-OfferShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-OfferShape a sh:NodeShape ;
+    rdfs:label "Offer" ;
+    rdfs:comment "Document providing the Monetary Value and the details to fulfill the Requirements set out in the Procurement Documents or Request for Offer. Additional information: A quotation is considered to be an Offer in the eProcurement Ontology." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Offer-epo-providesEvidence ;
+    sh:targetClass epo:Offer .
+
+epo-shape:epo-Offer-epo-providesEvidence a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class <http://data.europa.eu/m8g/Evidence> ;
+    sh:description "Makes available the Evidence." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Provides evidence" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:providesEvidence .

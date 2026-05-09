@@ -1,0 +1,27 @@
+# label: BerechneteMenge
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix p2p-o-doc-line: <https://purl.org/p2p-o/documentline#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:BerechneteMenge a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:maxLength 15 ;
+            sh:message "The segment QTY+12 is missing, i.e. the specification of the calculated quantity." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:deliveredQuantity ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:maxLength 15 ;
+            sh:message "The segment QTY+47 is missing, i.e. the specification of the calculated quantity." ;
+            sh:minCount 1 ;
+            sh:path p2p-o-doc-line:invoicedQuantity ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:maxLength 14 ;
+            sh:message "The segment MOA+203 is missing, i.e. the indication of the net position price." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasLineItemAmount ] ;
+    sh:targetClass edifact-o:Item .

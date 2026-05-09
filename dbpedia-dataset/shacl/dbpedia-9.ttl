@@ -1,0 +1,18 @@
+# label: CountryShape
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:CountryShape a sh:NodeShape ;
+  sh:description "A country code must be a two-letter string in uppercase."@en ;
+  sh:targetClass dbo:Country ;
+  sh:property [
+    sh:path dbo:countryCode ;
+    sh:pattern "^[A-Z]{2}$" ;
+    sh:minLength 2 ;
+    sh:maxLength 2 ;
+  ] .

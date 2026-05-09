@@ -1,0 +1,41 @@
+# label: epo-shape:epo-ParticipationConditionsSummaryShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ParticipationConditionsSummaryShape a sh:NodeShape ;
+    rdfs:label "Participation Conditions Summary" ;
+    rdfs:comment "Overview of the Participation Conditions." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ParticipationConditionsSummary-epo-describesObjectiveParticipationRules,
+        epo-shape:epo-ParticipationConditionsSummary-epo-describesVerificationMethod,
+        epo-shape:epo-ParticipationConditionsSummary-epo-hasReservedProcurement ;
+    sh:targetClass epo:ParticipationConditionsSummary .
+
+epo-shape:epo-ParticipationConditionsSummary-epo-describesObjectiveParticipationRules a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "General explanatory text on the rules and criteria to be fulfilled by the Tender." ;
+    sh:maxCount 1 ;
+    sh:name "Describes objective participation rules" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:describesObjectiveParticipationRules .
+
+epo-shape:epo-ParticipationConditionsSummary-epo-describesVerificationMethod a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "General explanatory text on the means used to validate the Participation Conditions." ;
+    sh:maxCount 1 ;
+    sh:name "Describes verification method" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:describesVerificationMethod .
+
+epo-shape:epo-ParticipationConditionsSummary-epo-hasReservedProcurement a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Explanation as to whether a procurement may be reserved for the participation of certain types of organisation." ;
+    sh:name "Has reserved procurement" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasReservedProcurement .

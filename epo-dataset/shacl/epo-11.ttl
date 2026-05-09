@@ -1,0 +1,32 @@
+# label: epo-shape:epo-sub-EvidenceInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-sub-EvidenceInformationShape a sh:NodeShape ;
+    rdfs:label "Evidence Information" ;
+    rdfs:comment "Information about a Certificate." ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:property epo-shape:epo-sub-EvidenceInformation-epo-sub-coversAllSelectionCriteria,
+        epo-shape:epo-sub-EvidenceInformation-epo-sub-summarisesInformationAboutEvidence ;
+    sh:targetClass epo:EvidenceInformation .
+
+epo-shape:epo-sub-EvidenceInformation-epo-sub-coversAllSelectionCriteria a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicator that the Certificate proves whether the Organization fulfils all Selection Criteria." ;
+    sh:maxCount 1 ;
+    sh:name "Covers all selection criteria" ;
+    sh:path epo:coversAllSelectionCriteria .
+
+epo-shape:epo-sub-EvidenceInformation-epo-sub-summarisesInformationAboutEvidence a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:sub-shape ;
+    sh:class <http://data.europa.eu/m8g/Evidence> ;
+    sh:description "Relation indicating the Certificate that the information refers to." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Summarises information about evidence" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:summarisesInformationAboutEvidence .

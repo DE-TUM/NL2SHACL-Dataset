@@ -1,0 +1,97 @@
+# label: chemrof:ImpreciseChemicalMixture
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:ImpreciseChemicalMixture a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A macroscopic polyatomic entity that consists of multiple chemical entities where the stoichiometry is not specified and the spatial arrangement of the ingredients is not defined. Examples include coal, tea tree oil, toothpaste, organometallic compounds, heterogeneous metals" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "imprecise chemical mixture" ;
+    sh:property [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 14 ;
+            sh:path chemrof:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The atoms in the chemical formula (except for hydrogens) are numbered in sequence; this sublayer describes which atoms are connected by bonds to which other ones." ;
+            sh:maxCount 1 ;
+            sh:name "inchi atom connections sublayer" ;
+            sh:order 3 ;
+            sh:path chemrof:inchi_atom_connections_sublayer ;
+            sh:pattern "^c.*" ],
+        [ sh:class chemrof:ProportionalPart ;
+            sh:description "Relationship between a complex mixture and its parts" ;
+            sh:name "has proportional parts" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path chemrof:has_proportional_parts ],
+        [ sh:datatype xsd:boolean ;
+            sh:maxCount 1 ;
+            sh:name "is radical" ;
+            sh:order 5 ;
+            sh:path chemrof:is_radical ],
+        [ sh:class chemrof:ChemicalRole ;
+            sh:maxCount 1 ;
+            sh:name "has chemical role" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path chemrof:has_chemical_role ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 13 ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "IUPAC name" ;
+            sh:order 4 ;
+            sh:path CHEMINF:000107 ],
+        [ sh:class owl:Class ;
+            sh:description "Holds between C and P if C owl:subClassOf P. Note that in this model, most classes are metaclasses (see 'owl class'), where these metaclasses may represent *groupings* or specific countable elements or species. We provide two different sub-properties of subclass of for two cases: (1) subtype_of, which connects grouping classes (e.g. alkane is_a hydrocarbon; alpha-amino-acid is_a amino-acid), (2) classified_by, which connects a specific element to a grouping class (e.g. methane is_a hydrocarbon; iron is_a metal; serine is_a amino-acid)" ;
+            sh:maxCount 1 ;
+            sh:name "owl subclass of" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 11 ;
+            sh:path chemrof:owl_subclass_of ],
+        [ sh:maxCount 1 ;
+            sh:name "InChi" ;
+            sh:order 7 ;
+            sh:path chemrof:inchi_string ],
+        [ sh:description "Proposed new Mixtures InChI" ;
+            sh:maxCount 1 ;
+            sh:name "has minchi representation" ;
+            sh:order 2 ;
+            sh:path chemrof:has_minchi_representation ],
+        [ sh:description "A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol." ;
+            sh:name "smiles string" ;
+            sh:order 9 ;
+            sh:path chemrof:smiles_string ],
+        [ sh:description "Location of a MixFile representing a chemical mixture" ;
+            sh:maxCount 1 ;
+            sh:name "has mixfile location" ;
+            sh:order 1 ;
+            sh:path chemrof:has_mixfile_location ],
+        [ sh:description "A chemical formula where numbers denote relative proportion of atoms. E.g. CH2O for glucose" ;
+            sh:maxCount 1 ;
+            sh:name "empirical formula" ;
+            sh:order 10 ;
+            sh:path chemrof:empirical_formula ],
+        [ sh:datatype xsd:string ;
+            sh:description "the main chemical formula" ;
+            sh:maxCount 1 ;
+            sh:name "inchi chemical sublayer" ;
+            sh:order 8 ;
+            sh:path chemrof:inchi_chemical_sublayer ;
+            sh:pattern "^[A-Z0-9\\.]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "id" ;
+            sh:order 12 ;
+            sh:path chemrof:id ] ;
+    sh:targetClass chemrof:ImpreciseChemicalMixture .

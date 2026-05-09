@@ -1,0 +1,43 @@
+# label: epo-shape:epo-cat-LineShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-cat-LineShape a sh:NodeShape ;
+    rdfs:label "Line" ;
+    rdfs:comment "Component of a document providing specific information." ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:property epo-shape:epo-cat-Line-epo-cat-specifiesItem,
+        epo-shape:epo-cat-Line-epo-ful-hasAssociatedDocument,
+        epo-shape:epo-cat-Line-epo-hasAdditionalInformation ;
+    sh:targetClass epo:Line .
+
+epo-shape:epo-cat-Line-epo-cat-specifiesItem a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:AbstractItem ;
+    sh:description "Relation indicating the Item." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies item" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesItem .
+
+epo-shape:epo-cat-Line-epo-ful-hasAssociatedDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:class epo:Document ;
+    sh:description "Is related to a Document." ;
+    sh:maxCount 1 ;
+    sh:name "Has associated document" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAssociatedDocument .
+
+epo-shape:epo-cat-Line-epo-hasAdditionalInformation a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:cat-shape ;
+    sh:description "Supplementary data about the instance of the concept." ;
+    sh:maxCount 1 ;
+    sh:name "Has additional information" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasAdditionalInformation .

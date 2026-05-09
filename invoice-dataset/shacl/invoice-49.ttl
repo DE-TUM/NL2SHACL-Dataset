@@ -1,0 +1,14 @@
+# label: Waehrung
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix schema1: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Waehrung a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "The CUX segment in the invoice header is missing" ;
+            sh:minCount 1 ;
+            sh:path schema1:currency ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

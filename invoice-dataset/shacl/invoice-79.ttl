@@ -1,0 +1,17 @@
+# label: SteuerangabenItem
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:SteuerangabenItem a sh:NodeShape ;
+    sh:property [ sh:maxCount 5 ;
+            sh:maxLength 5 ;
+            sh:message "The TAX segment at item level is incorrect, i.e. the specification of the tax rate; TAX; SG 21; header part; is incorrect." ;
+            sh:path edifact-o:hasVATrate ],
+        [ sh:maxCount 5 ;
+            sh:maxLength 5 ;
+            sh:message "The TAX segment at totals level is incorrect, i.e. the specification of the tax rate." ;
+            sh:path edifact-o:hasVATrate ] ;
+    sh:targetClass edifact-o:InvoiceDetails,
+        edifact-o:Item .

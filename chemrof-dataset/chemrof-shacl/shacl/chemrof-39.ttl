@@ -1,0 +1,35 @@
+# label: chemrof:Material
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:Material a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A substance composed of repeated chemical units that has a specific arrangement of atoms or molecules." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "material" ;
+    sh:property [ sh:class chemrof:ChemicalEntity ;
+            sh:maxCount 1 ;
+            sh:name "has repeat unit" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path chemrof:has_repeat_unit ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "id" ;
+            sh:order 1 ;
+            sh:path chemrof:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "name of chemical entity. E.g. nickel, carbon-16" ;
+            sh:maxCount 1 ;
+            sh:name "name" ;
+            sh:order 2 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:name "type" ;
+            sh:order 3 ;
+            sh:path chemrof:type ] ;
+    sh:targetClass chemrof:Material .

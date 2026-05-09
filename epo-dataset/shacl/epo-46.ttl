@@ -1,0 +1,20 @@
+# label: epo-shape:epo-OfferIssuerShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-OfferIssuerShape a sh:NodeShape ;
+    rdfs:label "Offer Issuer" ;
+    rdfs:comment "The Role of an Agent that distributes an Offer." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-OfferIssuer-epo-distributesOffer ;
+    sh:targetClass epo:OfferIssuer .
+
+epo-shape:epo-OfferIssuer-epo-distributesOffer a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Offer ;
+    sh:description "Sends the Offer." ;
+    sh:name "Distributes offer" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:distributesOffer .

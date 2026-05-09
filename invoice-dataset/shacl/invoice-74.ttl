@@ -1,0 +1,14 @@
+# label: AbschlagProzentsatz
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AbschlagProzentsatz a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:maxCount 15 ;
+            sh:maxLength 5 ;
+            sh:message "The data element 5245 or 5482 is missing in the PCD segment, i.e. the percentage type and amount of the discount." ;
+            sh:minLength 1 ;
+            sh:path edifact-o:hasAllowancePercentage ] ;
+    sh:targetClass edifact-o:Item .

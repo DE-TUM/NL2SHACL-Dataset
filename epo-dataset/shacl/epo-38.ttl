@@ -1,0 +1,20 @@
+# label: epo-shape:epo-ord-OrderAgreementShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+epo-shape:epo-ord-OrderAgreementShape a sh:NodeShape ;
+    rdfs:label "Order Agreement" ;
+    rdfs:comment "A Document sent from the Seller to Buyer specifying the goods, services or works to be delivered concerning a specific Order." ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:property epo-shape:epo-ord-OrderAgreement-epo-ord-comprisesOrderAgreementLine ;
+    sh:targetClass epo:OrderAgreement .
+
+epo-shape:epo-ord-OrderAgreement-epo-ord-comprisesOrderAgreementLine a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class epo:OrderAgreementLine ;
+    sh:description "Incorporates Order Agreement Line." ;
+    sh:name "Comprises order agreement line" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:comprisesOrderAgreementLine .

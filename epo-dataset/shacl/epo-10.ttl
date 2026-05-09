@@ -1,0 +1,30 @@
+# label: epo-shape:epo-SecurityClearanceTermShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-SecurityClearanceTermShape a sh:NodeShape ;
+    rdfs:label "Security Clearance Term" ;
+    rdfs:comment "Conditions and stipulations about the status requested of individuals allowing them access to classified information (state or organisational secrets) or to restricted areas, after completion of a thorough background check." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-SecurityClearanceTerm-epo-hasDeadline,
+        epo-shape:epo-SecurityClearanceTerm-epo-isSecurityClearanceRequired ;
+    sh:targetClass epo:SecurityClearanceTerm .
+
+epo-shape:epo-SecurityClearanceTerm-epo-hasDeadline a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:dateTime ;
+    sh:description "The time limit by which the security clearance must be submitted to the buyer." ;
+    sh:maxCount 1 ;
+    sh:name "Has deadline" ;
+    sh:path epo:hasDeadline .
+
+epo-shape:epo-SecurityClearanceTerm-epo-isSecurityClearanceRequired a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Security Clearance is needed." ;
+    sh:maxCount 1 ;
+    sh:name "Is security clearance required" ;
+    sh:path epo:isSecurityClearanceRequired .

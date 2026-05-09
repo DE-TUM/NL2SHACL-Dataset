@@ -1,0 +1,30 @@
+# label: chemrof:EntityWithStereochemistrySpecified
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:EntityWithStereochemistrySpecified a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for an entity where the stereochemistry is explicitly specified (corresponding to the /t, m/, and /s layers in InChI)" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "entity with stereochemistry specified" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "inchi stereochemical double bond sublayer" ;
+            sh:order 0 ;
+            sh:path chemrof:inchi_stereochemical_double_bond_sublayer ;
+            sh:pattern "^b.*" ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "inchi stereochemical type sublayer" ;
+            sh:order 2 ;
+            sh:path chemrof:inchi_stereochemical_type_sublayer ;
+            sh:pattern "^s.*" ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "inchi tetrahedral stereochemical sublayer" ;
+            sh:order 1 ;
+            sh:path chemrof:inchi_tetrahedral_stereochemical_sublayer ;
+            sh:pattern "^[tm].*" ] ;
+    sh:targetClass chemrof:EntityWithStereochemistrySpecified .

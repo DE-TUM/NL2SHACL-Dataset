@@ -1,0 +1,46 @@
+# label: epo-shape:epo-QualityTargetInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-QualityTargetInformationShape a sh:NodeShape ;
+    rdfs:label "Quality Target Information" ;
+    rdfs:comment "Information about a specific performance goal." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-QualityTargetInformation-epo-concernsContractTerm,
+        epo-shape:epo-QualityTargetInformation-epo-hasQualityTargetCode,
+        epo-shape:epo-QualityTargetInformation-epo-hasQualityTargetDescription ;
+    sh:targetClass epo:QualityTargetInformation .
+
+epo-shape:epo-QualityTargetInformation-epo-concernsContractTerm a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:ContractTerm ;
+    sh:description "Relates to Contract Term." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns contract term" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsContractTerm .
+
+epo-shape:epo-QualityTargetInformation-epo-hasQualityTargetCode a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Relation indicating the type of performance goal." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has quality target code" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasQualityTargetCode .
+
+epo-shape:epo-QualityTargetInformation-epo-hasQualityTargetDescription a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:description "Explanatory text about the performance goal." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has quality target description" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasQualityTargetDescription .

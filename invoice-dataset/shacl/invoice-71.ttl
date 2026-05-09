@@ -1,0 +1,16 @@
+# label: BruttoendbetragRechnunng
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix p2p-o-inv: <https://purl.org/p2p-o/invoice#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:BruttoendbetragRechnunng a sh:NodeShape ;
+    sh:message "The segment MOA+8, MOA+23 or MOA+204 is incorrect, i.e. the indication of the gross final amount of the invoice." ;
+    sh:or ( [ sh:maxCount 2 ;
+                sh:maxLength 13 ;
+                sh:path edifact-o:hasAllowanceAmount ] [ sh:maxCount 2 ;
+                sh:maxLength 13 ;
+                sh:path edifact-o:hasDiscountAmount ] ) ;
+    sh:targetClass edifact-o:Item .

@@ -1,0 +1,14 @@
+# label: zusaetzlichePartneridentifikation
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:zusaetzlichePartneridentifikation a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:maxLength 35 ;
+            sh:message "The RFF+API segment is incorrect, i.e. the specification of the additional partner identification." ;
+            sh:path edifact-o:additionalPartnerIdentificationEANCode ] ;
+    sh:targetClass org:FormalOrganization .

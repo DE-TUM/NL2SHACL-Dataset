@@ -1,0 +1,12 @@
+# label: SteuerpflichtigerBetrag
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:SteuerpflichtigerBetrag a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:message "The segment MOA+125 is missing, i.e. the indication of the taxable amount." ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasTaxableAmount ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

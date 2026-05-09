@@ -1,0 +1,45 @@
+# label: epo-shape:epo-ord-OrderChangeConfirmationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ord-OrderChangeConfirmationShape a sh:NodeShape ;
+    rdfs:label "Order Change Confirmation" ;
+    rdfs:comment "A Document providing information on the acknowledgment of the Order Change." ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:property epo-shape:epo-ord-OrderChangeConfirmation-epo-ord-respondsToOrderChange,
+        epo-shape:epo-ord-OrderChangeConfirmation-epo-specifiesBuyer,
+        epo-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller ;
+    sh:targetClass epo:OrderChangeConfirmation .
+
+epo-shape:epo-ord-OrderChangeConfirmation-epo-ord-respondsToOrderChange a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class epo:OrderChange ;
+    sh:description "Takes action in reaction to an Order Change." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Responds to order change" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:respondsToOrderChange .
+
+epo-shape:epo-ord-OrderChangeConfirmation-epo-specifiesBuyer a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class epo:Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies buyer" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesBuyer .
+
+epo-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class epo:Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies seller" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:specifiesSeller .

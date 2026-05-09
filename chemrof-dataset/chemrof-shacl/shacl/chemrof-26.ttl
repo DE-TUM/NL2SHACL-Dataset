@@ -1,0 +1,18 @@
+# label: chemrof:EntityWithChargeSpecified
+@prefix chemrof: <https://w3id.org/chemrof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+chemrof:EntityWithChargeSpecified a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for an entity where the charge is explicitly specified (corresponding to the /q layer in InChI)" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "entity with charge specified" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:name "inchi charge sublayer" ;
+            sh:order 0 ;
+            sh:path chemrof:inchi_charge_sublayer ;
+            sh:pattern "^q.*" ] ;
+    sh:targetClass chemrof:EntityWithChargeSpecified .

@@ -1,0 +1,23 @@
+# label: epo-shape:epo-ExclusionGroundShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ExclusionGroundShape a sh:NodeShape ;
+    rdfs:label "Exclusion Ground" ;
+    rdfs:comment "Criterion that describes a legal Requirement to be met by the Economic Operator to be a Candidate in the Procurement." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ExclusionGround-epo-hasExclusionGroundType ;
+    sh:targetClass epo:ExclusionGround .
+
+epo-shape:epo-ExclusionGround-epo-hasExclusionGroundType a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "Relation indicating the exclusion ground classification." ;
+    sh:maxCount 1 ;
+    sh:name "Has exclusion ground type" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasExclusionGroundType .

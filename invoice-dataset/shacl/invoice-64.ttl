@@ -1,0 +1,14 @@
+# label: Zahlungsbedingung
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Zahlungsbedingung a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:in ( "As usual" "Extended" "Wie ueblich" "Verlaengert" ) ;
+            sh:maxCount 5 ;
+            sh:message "The specified payment term is not one of the expected values, i.e. data element 4279 in the PAT segment is not equal to 1 or 7." ;
+            sh:path edifact-o:paymentCondition ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

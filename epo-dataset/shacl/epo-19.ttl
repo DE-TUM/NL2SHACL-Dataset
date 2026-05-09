@@ -1,0 +1,33 @@
+# label: epo-shape:epo-ord-OrderResponseInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ord-OrderResponseInformationShape a sh:NodeShape ;
+    rdfs:label "Order Response Information" ;
+    rdfs:comment "Information about an Order Response." ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:property epo-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus,
+        epo-shape:epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine ;
+    sh:targetClass epo:OrderResponseInformation .
+
+epo-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class skos:Concept ;
+    sh:description "Relation indicating the status." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has status" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasStatus .
+
+epo-shape:epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ord-shape ;
+    sh:class epo:OrderResponseLine ;
+    sh:description "Information that is particular to an Order Response Line." ;
+    sh:name "Is specific to order response line" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isSpecificToOrderResponseLine .

@@ -1,0 +1,48 @@
+# label: epo-shape:epo-QualificationCriterionShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-QualificationCriterionShape a sh:NodeShape ;
+    rdfs:label "Qualification Criterion" ;
+    rdfs:comment "Criterion used in the first stage of procurement." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInESPDRequest,
+        epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInNotice,
+        epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInProcurementDocuments,
+        epo-shape:epo-QualificationCriterion-epo-includesNationalCriterion ;
+    sh:targetClass epo:QualificationCriterion .
+
+epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInESPDRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "The Qualification Criteria is specified in the ESPD Request." ;
+    sh:maxCount 1 ;
+    sh:name "Has qualification criteria stated in ESPD request" ;
+    sh:path epo:hasQualificationCriteriaStatedInESPDRequest .
+
+epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInNotice a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "The Qualification Criteria is specified in the Notice." ;
+    sh:maxCount 1 ;
+    sh:name "Has qualification criteria stated in notice" ;
+    sh:path epo:hasQualificationCriteriaStatedInNotice .
+
+epo-shape:epo-QualificationCriterion-epo-hasQualificationCriteriaStatedInProcurementDocuments a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "The Qualification Criteria is specified in the Procurement Documents." ;
+    sh:maxCount 1 ;
+    sh:name "Has qualification criteria stated in procurement documents" ;
+    sh:path epo:hasQualificationCriteriaStatedInProcurementDocuments .
+
+epo-shape:epo-QualificationCriterion-epo-includesNationalCriterion a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:QualificationCriterion ;
+    sh:description "Additional Information: In the ESPD, a Subcriterion is used to define national sub-criteria; maps to a UBL-2.3 cac:SubTenderingCriterion class. It is currently used only for purely national criteria, to be able to establish the mapping from eCertis." ;
+    sh:name "Includes national criterion" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:includesNationalCriterion .

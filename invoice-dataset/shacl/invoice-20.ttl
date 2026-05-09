@@ -1,0 +1,12 @@
+# label: LaengeDatumLieferscheinnummer
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:LaengeDatumLieferscheinnummer a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxLength 8 ;
+            sh:message "The date of the supplier's order number, RFF+DQ, is too long" ;
+            sh:path edifact-o:dateDeliveryNoteNumber ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

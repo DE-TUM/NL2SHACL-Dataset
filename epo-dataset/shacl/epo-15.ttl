@@ -1,0 +1,33 @@
+# label: epo-shape:epo-TechniqueShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-TechniqueShape a sh:NodeShape ;
+    rdfs:label "Technique" ;
+    rdfs:comment "Method used for conducting Procurement Procedures. Several Techniques can be combined in one single Procurement Procedure (e.g. eAuction can be carried out in a Framework Agreement or DPS)." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-Technique-epo-hasEstimatedValidityPeriod,
+        epo-shape:epo-Technique-epo-hasValidityPeriod ;
+    sh:targetClass epo:Technique .
+
+epo-shape:epo-Technique-epo-hasEstimatedValidityPeriod a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class time:Interval ;
+    sh:description "Relation indicating the time range in which the instance of the concept is valid." ;
+    sh:maxCount 1 ;
+    sh:name "Has estimated validity period" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasEstimatedValidityPeriod .
+
+epo-shape:epo-Technique-epo-hasValidityPeriod a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class time:Interval ;
+    sh:description "The relation indicating until when a given instance of a concept is applicable." ;
+    sh:maxCount 1 ;
+    sh:name "Has validity period" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasValidityPeriod .

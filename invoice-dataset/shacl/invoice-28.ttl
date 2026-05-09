@@ -1,0 +1,18 @@
+# label: StrasseKaeufer
+@prefix : <http://mapping.example.com/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:StrasseKaeufer a sh:NodeShape ;
+    sh:message "The data element 3042 is missing for the Segemnet NAD+BY, i.e. the buyer's street address." ;
+    sh:or ( [ sh:not [ a sh:PropertyShape ;
+                        sh:hasValue "http://example.com/BuyerRole" ;
+                        sh:path rdf:type ] ] [ sh:datatype xsd:string ;
+                sh:maxCount 1 ;
+                sh:maxLength 35 ;
+                sh:minCount 1 ;
+                sh:path vcard:hasStreetAddress ] ) ;
+    sh:targetClass org:FormalOrganization .

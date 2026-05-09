@@ -1,0 +1,54 @@
+# label: epo-shape:epo-ful-DespatchLineShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ful-DespatchLineShape a sh:NodeShape ;
+    rdfs:label "Despatch Line" ;
+    rdfs:comment "Details concerning the fulfilment of an Order Line." ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:property epo-shape:epo-ful-DespatchLine-epo-ful-hasDespatchedQuantity,
+        epo-shape:epo-ful-DespatchLine-epo-ful-hasOutstandingQuantity,
+        epo-shape:epo-ful-DespatchLine-epo-ful-hasOutstandingQuantityReason,
+        epo-shape:epo-ful-DespatchLine-epo-ful-refersToOrderLine ;
+    sh:targetClass epo:DespatchLine .
+
+epo-shape:epo-ful-DespatchLine-epo-ful-hasDespatchedQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "The Quantity that has been sent." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Has despatched quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasDespatchedQuantity .
+
+epo-shape:epo-ful-DespatchLine-epo-ful-hasOutstandingQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "The Quantity of non-despatched Goods Items." ;
+    sh:maxCount 1 ;
+    sh:name "Has outstanding quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasOutstandingQuantity .
+
+epo-shape:epo-ful-DespatchLine-epo-ful-hasOutstandingQuantityReason a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:description "Explanation of the outstanding quantity still to be despatched." ;
+    sh:maxCount 1 ;
+    sh:name "Has outstanding quantity reason" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path epo:hasOutstandingQuantityReason .
+
+epo-shape:epo-ful-DespatchLine-epo-ful-refersToOrderLine a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:OrderLine ;
+    sh:description "Reference to an Order Line." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to order line" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:refersToOrderLine .

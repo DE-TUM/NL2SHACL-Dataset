@@ -1,0 +1,14 @@
+# label: tatsaechliches_Lieferdatum
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix p2p-o-inv: <https://purl.org/p2p-o/invoice#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:tatsaechliches_Lieferdatum a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "The DTM+35 segment is missing" ;
+            sh:minCount 1 ;
+            sh:path p2p-o-inv:actualDeliveryDate ] ;
+    sh:targetClass edifact-o:InvoiceDetails .

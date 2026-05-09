@@ -1,0 +1,59 @@
+# label: epo-shape:epo-ProcurementProcessInformationShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ProcurementProcessInformationShape a sh:NodeShape ;
+    rdfs:label "Procurement Process Information" ;
+    rdfs:comment "Information about the temporal unfolding or succession of Procurement Objects." ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:property epo-shape:epo-ProcurementProcessInformation-epo-concernsLot,
+        epo-shape:epo-ProcurementProcessInformation-epo-concernsProcedure,
+        epo-shape:epo-ProcurementProcessInformation-epo-isCompetitionTerminated,
+        epo-shape:epo-ProcurementProcessInformation-epo-isDPSTerminated,
+        epo-shape:epo-ProcurementProcessInformation-epo-isToBeRelaunched ;
+    sh:targetClass epo:ProcurementProcessInformation .
+
+epo-shape:epo-ProcurementProcessInformation-epo-concernsLot a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Lot ;
+    sh:description "Relates to Lot." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns lot" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsLot .
+
+epo-shape:epo-ProcurementProcessInformation-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:class epo:Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:concernsProcedure .
+
+epo-shape:epo-ProcurementProcessInformation-epo-isCompetitionTerminated a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "No further contracts will be awarded in this procedure. Additional Information: This can be instantiated in the post award phase. PIN for Competition needs to be signaled. This field can be used even if no contracts are awarded in the contract award notice." ;
+    sh:maxCount 1 ;
+    sh:name "Is competition terminated" ;
+    sh:path epo:isCompetitionTerminated .
+
+epo-shape:epo-ProcurementProcessInformation-epo-isDPSTerminated a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "End of the Dynamic Purchase System (DPS). Additional Information: This property can be used in the contract award notice even if no contracts are awarded." ;
+    sh:maxCount 1 ;
+    sh:name "Is DPS terminated" ;
+    sh:path epo:isDPSTerminated .
+
+epo-shape:epo-ProcurementProcessInformation-epo-isToBeRelaunched a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:core-shape ;
+    sh:datatype xsd:boolean ;
+    sh:description "Indicator of whether the procurement object is to be relaunched. Additional information: This can be instantiated in the post award phase." ;
+    sh:maxCount 1 ;
+    sh:name "Is to be relaunched" ;
+    sh:path epo:isToBeRelaunched .

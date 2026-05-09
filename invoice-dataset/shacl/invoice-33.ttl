@@ -1,0 +1,17 @@
+# label: UmsatzsteuernummerRechnungsempfaenger
+@prefix : <http://mapping.example.com/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix p2p-o-org: <https://purl.org/p2p-o/organization#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:UmsatzsteuernummerRechnungsempfaenger a sh:NodeShape ;
+    sh:message "The segemnt RFF+VA is missing for the segemnet NAD+IV, i.e. the VAT number of the invoice recipient is missing." ;
+    sh:or ( [ sh:not [ a sh:PropertyShape ;
+                        sh:hasValue "http://example.com/InvoiceeRole" ;
+                        sh:path rdf:type ] ] [ sh:maxCount 1 ;
+                sh:maxLength 14 ;
+                sh:minCount 1 ;
+                sh:path p2p-o-org:VATIdentifier ] ) ;
+    sh:targetClass org:FormalOrganization .

@@ -1,0 +1,63 @@
+# label: epo-shape:epo-ful-ReceiptAdviceLineShape
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo-shape:epo-ful-ReceiptAdviceLineShape a sh:NodeShape ;
+    rdfs:label "Receipt Advice Line" ;
+    rdfs:comment "Details concerning the Fulfilment of a Despatch Line." ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:property epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasOversupplyQuantity,
+        epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasReceivedQuantity,
+        epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasRejectedQuantity,
+        epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasShortQuantity,
+        epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-isSubmittedForDespatchLine ;
+    sh:targetClass epo:ReceiptAdviceLine .
+
+epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasOversupplyQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "Relation indicating the Quantity surplus." ;
+    sh:maxCount 1 ;
+    sh:name "Has oversupply quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasOversupplyQuantity .
+
+epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasReceivedQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "Relation indicating the delivered Quantity." ;
+    sh:maxCount 1 ;
+    sh:name "Has received quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasReceivedQuantity .
+
+epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasRejectedQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "Relation indicating the non-accepted Quantity." ;
+    sh:maxCount 1 ;
+    sh:name "Has rejected quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasRejectedQuantity .
+
+epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasShortQuantity a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:Quantity ;
+    sh:description "Relation indicating the Quantity deficit." ;
+    sh:maxCount 1 ;
+    sh:name "Has short quantity" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasShortQuantity .
+
+epo-shape:epo-ful-ReceiptAdviceLine-epo-ful-isSubmittedForDespatchLine a sh:PropertyShape ;
+    rdfs:isDefinedBy epo-shape:ful-shape ;
+    sh:class epo:DespatchLine ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Despatch Line." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Is submitted for despatch line" ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isSubmittedForDespatchLine .

@@ -1,0 +1,13 @@
+# label: ExistenzBelegnummer
+@prefix : <http://mapping.example.com/> .
+@prefix edifact-o: <https://purl.org/edifact/ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ExistenzBelegnummer a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "Data element 1004 is missing in the BGM segment" ;
+            sh:minCount 1 ;
+            sh:path edifact-o:hasDocumentNumber ] ;
+    sh:targetClass edifact-o:InvoiceDetails .
